@@ -1,0 +1,178 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/tile-formatting.schema.json",
+  "width": 1200,
+  "height": 800,
+  "hideSelection": true,
+  "formatter": {
+    "elmType": "div",
+    "style": {
+      "display": "flex",
+      "flex-direction": "column",
+      "padding": "20px",
+      "background-color": "#f3f4f6",
+      "border-radius": "10px",
+      "box-shadow": "0 4px 6px rgba(0, 0, 0, 0.1)"
+    },
+    "children": [
+      {
+        "elmType": "div",
+        "style": {
+          "font-size": "24px",
+          "font-weight": "600",
+          "margin-bottom": "16px",
+          "color": "#374151"
+        },
+        "txtContent": "=[$BusinessProcessName]"
+      },
+      {
+        "elmType": "div",
+        "style": {
+          "display": "grid",
+          "grid-template-columns": "1fr 1fr",
+          "gap": "20px"
+        },
+        "children": [
+          {
+            "elmType": "div",
+            "style": {
+              "padding": "16px",
+              "background-color": "#ffffff",
+              "border-radius": "8px",
+              "box-shadow": "0 2px 4px rgba(0, 0, 0, 0.1)"
+            },
+            "children": [
+              {
+                "elmType": "div",
+                "style": {
+                  "font-size": "18px",
+                  "font-weight": "600",
+                  "margin-bottom": "12px",
+                  "color": "#1f2937"
+                },
+                "txtContent": "Identity"
+              },
+              {
+                "elmType": "ul",
+                "style": {
+                  "padding-left": "16px",
+                  "list-style-type": "circle"
+                },
+                "children": [
+                  {
+                    "elmType": "li",
+                    "txtContent": "=concat('Job Name(s): ', [$JobNames])"
+                  },
+                  {
+                    "elmType": "li",
+                    "txtContent": "=concat('Purpose: ', [$Purpose])"
+                  },
+                  {
+                    "elmType": "li",
+                    "txtContent": "=concat('Restrictions & Prerequisites: ', [$RestrictionsPrerequisites])"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "elmType": "div",
+            "style": {
+              "padding": "16px",
+              "background-color": "#ffffff",
+              "border-radius": "8px",
+              "box-shadow": "0 2px 4px rgba(0, 0, 0, 0.1)"
+            },
+            "children": [
+              {
+                "elmType": "div",
+                "style": {
+                  "font-size": "18px",
+                  "font-weight": "600",
+                  "margin-bottom": "12px",
+                  "color": "#1f2937"
+                },
+                "txtContent": "Scheduling"
+              },
+              {
+                "elmType": "ul",
+                "style": {
+                  "padding-left": "16px",
+                  "list-style-type": "circle"
+                },
+                "children": [
+                  {
+                    "elmType": "li",
+                    "txtContent": "=concat('Days of Week: ', [$ScheduleDaysOfWeek])"
+                  },
+                  {
+                    "elmType": "li",
+                    "txtContent": "=concat('Execution Time(s): ', [$ScheduleExecutionTimes])"
+                  },
+                  {
+                    "elmType": "li",
+                    "txtContent": "=concat('Cyclic: ', if([$ScheduleCyclic], 'Yes', 'No'))"
+                  },
+                  {
+                    "elmType": "li",
+                    "txtContent": "=concat('Cyclic Interval: ', [$ScheduleCyclicInterval], ' minutes')"
+                  },
+                  {
+                    "elmType": "li",
+                    "txtContent": "=concat('Deadline Time: ', [$ScheduleDeadlineTime])"
+                  },
+                  {
+                    "elmType": "li",
+                    "txtContent": "=concat('SLA(s): ', [$ScheduleSLAs])"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "elmType": "div",
+        "style": {
+          "margin-top": "20px",
+          "padding": "16px",
+          "background-color": "#ffffff",
+          "border-radius": "8px",
+          "box-shadow": "0 2px 4px rgba(0, 0, 0, 0.1)"
+        },
+        "children": [
+          {
+            "elmType": "div",
+            "style": {
+              "font-size": "18px",
+              "font-weight": "600",
+              "margin-bottom": "12px",
+              "color": "#1f2937"
+            },
+            "txtContent": "Admin"
+          },
+          {
+            "elmType": "ul",
+            "style": {
+              "padding-left": "16px",
+              "list-style-type": "circle"
+            },
+            "children": [
+              {
+                "elmType": "li",
+                "txtContent": "=concat('Troubleshooting: ', [$AdminTroubleshooting])"
+              },
+              {
+                "elmType": "li",
+                "txtContent": "=concat('Running in Control-M: ', [$AdminRunningInControlM])"
+              },
+              {
+                "elmType": "li",
+                "txtContent": "=concat('Running Manually: ', [$AdminRunningManually])"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
