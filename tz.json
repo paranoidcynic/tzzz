@@ -1,13 +1,14 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/tile-formatting.schema.json",
   "width": 1200,
-  "height": 800,
+  "height": 1000,
   "hideSelection": true,
   "formatter": {
     "elmType": "div",
     "style": {
       "display": "flex",
       "flex-direction": "column",
+      "gap": "16px",
       "padding": "20px",
       "background-color": "#f3f4f6",
       "border-radius": "10px",
@@ -19,17 +20,17 @@
         "style": {
           "font-size": "24px",
           "font-weight": "600",
-          "margin-bottom": "16px",
+          "margin-bottom": "8px",
           "color": "#374151"
         },
-        "txtContent": "=[$BusinessProcessName]"
+        "txtContent": "=[$Business_x0020_Process_x0020_Name]"
       },
       {
         "elmType": "div",
         "style": {
           "display": "grid",
           "grid-template-columns": "1fr 1fr",
-          "gap": "20px"
+          "gap": "16px"
         },
         "children": [
           {
@@ -46,7 +47,7 @@
                 "style": {
                   "font-size": "18px",
                   "font-weight": "600",
-                  "margin-bottom": "12px",
+                  "margin-bottom": "8px",
                   "color": "#1f2937"
                 },
                 "txtContent": "Identity"
@@ -60,7 +61,7 @@
                 "children": [
                   {
                     "elmType": "li",
-                    "txtContent": "=concat('Job Name(s): ', [$JobNames])"
+                    "txtContent": "=concat('Job Name(s): ', [$Job_x0020_Name_x0028_s_x0029_])"
                   },
                   {
                     "elmType": "li",
@@ -68,7 +69,7 @@
                   },
                   {
                     "elmType": "li",
-                    "txtContent": "=concat('Restrictions & Prerequisites: ', [$RestrictionsPrerequisites])"
+                    "txtContent": "=concat('Restrictions & Prerequisites: ', [$Restrictions_x0020__x0026__x0020_Prerequisites])"
                   }
                 ]
               }
@@ -88,7 +89,45 @@
                 "style": {
                   "font-size": "18px",
                   "font-weight": "600",
-                  "margin-bottom": "12px",
+                  "margin-bottom": "8px",
+                  "color": "#1f2937"
+                },
+                "txtContent": "Recovery"
+              },
+              {
+                "elmType": "ul",
+                "style": {
+                  "padding-left": "16px",
+                  "list-style-type": "circle"
+                },
+                "children": [
+                  {
+                    "elmType": "li",
+                    "txtContent": "=concat('Rerun Job?: ', if([$Recovery_x0020__x002d__x0020_Rerun_x0020_Job_x003f_], 'Yes', 'No'))"
+                  },
+                  {
+                    "elmType": "li",
+                    "txtContent": "=concat('Action(s): ', [$Recovery_x0020__x002d__x0020_Action_x0028_s_x0029_])"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "elmType": "div",
+            "style": {
+              "padding": "16px",
+              "background-color": "#ffffff",
+              "border-radius": "8px",
+              "box-shadow": "0 2px 4px rgba(0, 0, 0, 0.1)"
+            },
+            "children": [
+              {
+                "elmType": "div",
+                "style": {
+                  "font-size": "18px",
+                  "font-weight": "600",
+                  "margin-bottom": "8px",
                   "color": "#1f2937"
                 },
                 "txtContent": "Scheduling"
@@ -102,72 +141,109 @@
                 "children": [
                   {
                     "elmType": "li",
-                    "txtContent": "=concat('Days of Week: ', [$ScheduleDaysOfWeek])"
+                    "txtContent": "=concat('Day(s) of Week: ', [$Schedule_x0020__x002d__x0020_Day_x0028_s_x0029__x0020_of__x0020_Week])"
                   },
                   {
                     "elmType": "li",
-                    "txtContent": "=concat('Execution Time(s): ', [$ScheduleExecutionTimes])"
+                    "txtContent": "=concat('Execution Time(s): ', [$Schedule_x0020__x002d__x0020_Execution_x0020_Time_x0028_s_x0029_])"
                   },
                   {
                     "elmType": "li",
-                    "txtContent": "=concat('Cyclic: ', if([$ScheduleCyclic], 'Yes', 'No'))"
+                    "txtContent": "=concat('Cyclic: ', if([$Schedule_x0020__x002d__x0020_Cyclic], 'Yes', 'No'))"
                   },
                   {
                     "elmType": "li",
-                    "txtContent": "=concat('Cyclic Interval: ', [$ScheduleCyclicInterval], ' minutes')"
+                    "txtContent": "=concat('Cyclic Interval: ', [$Schedule_x0020__x002d__x0020_Cyclic_x0020_Interval], ' minutes')"
                   },
                   {
                     "elmType": "li",
-                    "txtContent": "=concat('Deadline Time: ', [$ScheduleDeadlineTime])"
+                    "txtContent": "=concat('Deadline Time: ', [$Schedule_x0020__x002d__x0020_Deadline_x0020_Time])"
                   },
                   {
                     "elmType": "li",
-                    "txtContent": "=concat('SLA(s): ', [$ScheduleSLAs])"
+                    "txtContent": "=concat('SLA(s): ', [$Schedule_x0020__x002d__x0020_SLA_x0028_s_x0029_])"
                   }
                 ]
               }
             ]
-          }
-        ]
-      },
-      {
-        "elmType": "div",
-        "style": {
-          "margin-top": "20px",
-          "padding": "16px",
-          "background-color": "#ffffff",
-          "border-radius": "8px",
-          "box-shadow": "0 2px 4px rgba(0, 0, 0, 0.1)"
-        },
-        "children": [
+          },
           {
             "elmType": "div",
             "style": {
-              "font-size": "18px",
-              "font-weight": "600",
-              "margin-bottom": "12px",
-              "color": "#1f2937"
-            },
-            "txtContent": "Admin"
-          },
-          {
-            "elmType": "ul",
-            "style": {
-              "padding-left": "16px",
-              "list-style-type": "circle"
+              "padding": "16px",
+              "background-color": "#ffffff",
+              "border-radius": "8px",
+              "box-shadow": "0 2px 4px rgba(0, 0, 0, 0.1)"
             },
             "children": [
               {
-                "elmType": "li",
-                "txtContent": "=concat('Troubleshooting: ', [$AdminTroubleshooting])"
+                "elmType": "div",
+                "style": {
+                  "font-size": "18px",
+                  "font-weight": "600",
+                  "margin-bottom": "8px",
+                  "color": "#1f2937"
+                },
+                "txtContent": "Ownership"
               },
               {
-                "elmType": "li",
-                "txtContent": "=concat('Running in Control-M: ', [$AdminRunningInControlM])"
+                "elmType": "ul",
+                "style": {
+                  "padding-left": "16px",
+                  "list-style-type": "circle"
+                },
+                "children": [
+                  {
+                    "elmType": "li",
+                    "txtContent": "=concat('Product Owner(s): ', [$Product_x0020_Owner_x0028_s_x0029_])"
+                  },
+                  {
+                    "elmType": "li",
+                    "txtContent": "=concat('Technical Contact(s): ', [$Technical_x0020_Contact_x0028_s_x0029_])"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "elmType": "div",
+            "style": {
+              "padding": "16px",
+              "background-color": "#ffffff",
+              "border-radius": "8px",
+              "box-shadow": "0 2px 4px rgba(0, 0, 0, 0.1)"
+            },
+            "children": [
+              {
+                "elmType": "div",
+                "style": {
+                  "font-size": "18px",
+                  "font-weight": "600",
+                  "margin-bottom": "8px",
+                  "color": "#1f2937"
+                },
+                "txtContent": "Admin"
               },
               {
-                "elmType": "li",
-                "txtContent": "=concat('Running Manually: ', [$AdminRunningManually])"
+                "elmType": "ul",
+                "style": {
+                  "padding-left": "16px",
+                  "list-style-type": "circle"
+                },
+                "children": [
+                  {
+                    "elmType": "li",
+                    "txtContent": "=concat('Troubleshooting: ', [$Admin_x0020__x002d__x0020_Troubleshooting])"
+                  },
+                  {
+                    "elmType": "li",
+                    "txtContent": "=concat('Running in Control-M: ', [$Admin_x0020__x002d__x0020_Running_x0020_the_x0020_Job_x0020_in_x0020_Control_x002d_M])"
+                  },
+                  {
+                    "elmType": "li",
+                    "txtContent": "=concat('Running Manually: ', [$Admin_x0020__x002d__x0020_Running_x0020_the_x0020_Job_x0020_Manually])"
+                  }
+                ]
               }
             ]
           }
