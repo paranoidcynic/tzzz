@@ -1,75 +1,172 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/tile-formatting.schema.json",
   "width": 1200,
-  "height": 1000,
+  "height": 1400,
   "hideSelection": true,
+  "fillHorizontally": true,
   "formatter": {
     "elmType": "div",
     "style": {
+      "background-color": "#f9f9f9",
+      "border-radius": "10px",
+      "box-shadow": "0 4px 8px rgba(0,0,0,0.1)",
+      "padding": "20px",
       "display": "flex",
       "flex-direction": "column",
-      "gap": "16px",
-      "padding": "20px",
-      "background-color": "#f3f4f6",
-      "border-radius": "10px",
-      "box-shadow": "0 4px 6px rgba(0, 0, 0, 0.1)"
+      "gap": "20px",
+      "overflow": "hidden"
     },
     "children": [
       {
         "elmType": "div",
         "style": {
-          "font-size": "24px",
-          "font-weight": "600",
-          "margin-bottom": "8px",
-          "color": "#374151"
-        },
-        "txtContent": "=[$Business_x0020_Process_x0020_Name]"
-      },
-      {
-        "elmType": "div",
-        "style": {
-          "display": "grid",
-          "grid-template-columns": "1fr 1fr",
-          "gap": "16px"
+          "display": "flex",
+          "align-items": "center",
+          "gap": "20px"
         },
         "children": [
           {
             "elmType": "div",
             "style": {
-              "padding": "16px",
-              "background-color": "#ffffff",
-              "border-radius": "8px",
-              "box-shadow": "0 2px 4px rgba(0, 0, 0, 0.1)"
+              "font-size": "24px",
+              "font-weight": "bold",
+              "color": "#333"
+            },
+            "txtContent": "[$Business Process Name]"
+          },
+          {
+            "elmType": "div",
+            "style": {
+              "background-color": "=if([$Recovery - Rerun Job?], '#4caf50', '#f44336')",
+              "color": "#fff",
+              "border-radius": "4px",
+              "padding": "5px 10px",
+              "font-size": "14px"
+            },
+            "txtContent": "=if([$Recovery - Rerun Job?], 'Rerunnable', 'Non-Rerunnable')"
+          }
+        ]
+      },
+      {
+        "elmType": "div",
+        "style": {
+          "display": "flex",
+          "flex-wrap": "wrap",
+          "gap": "20px"
+        },
+        "children": [
+          {
+            "elmType": "div",
+            "style": {
+              "flex": "1 1 45%",
+              "padding": "10px",
+              "border": "1px solid #ccc",
+              "border-radius": "8px"
             },
             "children": [
               {
                 "elmType": "div",
                 "style": {
-                  "font-size": "18px",
-                  "font-weight": "600",
-                  "margin-bottom": "8px",
-                  "color": "#1f2937"
+                  "font-weight": "bold",
+                  "color": "#555",
+                  "margin-bottom": "8px"
                 },
-                "txtContent": "Identity"
+                "txtContent": "Purpose"
               },
               {
-                "elmType": "ul",
+                "elmType": "div",
                 "style": {
-                  "padding-left": "16px",
-                  "list-style-type": "circle"
+                  "color": "#777"
+                },
+                "txtContent": "[$Purpose]"
+              }
+            ]
+          },
+          {
+            "elmType": "div",
+            "style": {
+              "flex": "1 1 45%",
+              "padding": "10px",
+              "border": "1px solid #ccc",
+              "border-radius": "8px"
+            },
+            "children": [
+              {
+                "elmType": "div",
+                "style": {
+                  "font-weight": "bold",
+                  "color": "#555",
+                  "margin-bottom": "8px"
+                },
+                "txtContent": "Restrictions & Prerequisites"
+              },
+              {
+                "elmType": "div",
+                "style": {
+                  "color": "#777"
+                },
+                "txtContent": "[$Restrictions & Prerequisites]"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "elmType": "div",
+        "style": {
+          "display": "flex",
+          "flex-wrap": "wrap",
+          "gap": "20px"
+        },
+        "children": [
+          {
+            "elmType": "div",
+            "style": {
+              "flex": "1 1 45%",
+              "padding": "10px",
+              "border": "1px solid #ccc",
+              "border-radius": "8px"
+            },
+            "children": [
+              {
+                "elmType": "div",
+                "style": {
+                  "font-weight": "bold",
+                  "color": "#555",
+                  "margin-bottom": "8px"
+                },
+                "txtContent": "Schedule Details"
+              },
+              {
+                "elmType": "div",
+                "style": {
+                  "color": "#777"
                 },
                 "children": [
                   {
-                    "elmType": "li",
-                    "txtContent": "=concat('Job Name(s): ', [$Job_x0020_Name_x0028_s_x0029_])"
+                    "elmType": "span",
+                    "txtContent": "Day(s): [$Schedule - Day(s) of Week]"
                   },
                   {
-                    "elmType": "li",
-                    "txtContent": "=concat('Purpose: ', [$Purpose])"
+                    "elmType": "br"
                   },
                   {
-                    "elmType": "li",
-                    "txtContent": "=concat('Restrictions & Prerequisites: ', [$Restrictions_x0020__x0026__x0020_Prerequisites])"
+                    "elmType": "span",
+                    "txtContent": "Execution Time(s): [$Schedule - Execution Time(s)]"
+                  },
+                  {
+                    "elmType": "br"
+                  },
+                  {
+                    "elmType": "span",
+                    "txtContent": "Cyclic: =if([$Schedule - Cyclic], 'Yes', 'No')"
+                  },
+                  {
+                    "elmType": "br"
+                  },
+                  {
+                    "elmType": "span",
+                    "txtContent": "=if([$Schedule - Cyclic], 'Interval: ' + [$Schedule - Cyclic Interval] + ' mins', '')"
                   }
                 ]
               }
@@ -78,172 +175,136 @@
           {
             "elmType": "div",
             "style": {
-              "padding": "16px",
-              "background-color": "#ffffff",
-              "border-radius": "8px",
-              "box-shadow": "0 2px 4px rgba(0, 0, 0, 0.1)"
+              "flex": "1 1 45%",
+              "padding": "10px",
+              "border": "1px solid #ccc",
+              "border-radius": "8px"
             },
             "children": [
               {
                 "elmType": "div",
                 "style": {
-                  "font-size": "18px",
-                  "font-weight": "600",
-                  "margin-bottom": "8px",
-                  "color": "#1f2937"
+                  "font-weight": "bold",
+                  "color": "#555",
+                  "margin-bottom": "8px"
                 },
-                "txtContent": "Recovery"
+                "txtContent": "Recovery Actions"
               },
               {
-                "elmType": "ul",
+                "elmType": "div",
                 "style": {
-                  "padding-left": "16px",
-                  "list-style-type": "circle"
+                  "color": "#777"
                 },
-                "children": [
-                  {
-                    "elmType": "li",
-                    "txtContent": "=concat('Rerun Job?: ', if([$Recovery_x0020__x002d__x0020_Rerun_x0020_Job_x003f_], 'Yes', 'No'))"
-                  },
-                  {
-                    "elmType": "li",
-                    "txtContent": "=concat('Action(s): ', [$Recovery_x0020__x002d__x0020_Action_x0028_s_x0029_])"
-                  }
-                ]
+                "txtContent": "[$Recovery - Action(s)]"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "elmType": "div",
+        "style": {
+          "display": "flex",
+          "flex-wrap": "wrap",
+          "gap": "20px"
+        },
+        "children": [
+          {
+            "elmType": "div",
+            "style": {
+              "flex": "1 1 45%",
+              "padding": "10px",
+              "border": "1px solid #ccc",
+              "border-radius": "8px"
+            },
+            "children": [
+              {
+                "elmType": "div",
+                "style": {
+                  "font-weight": "bold",
+                  "color": "#555",
+                  "margin-bottom": "8px"
+                },
+                "txtContent": "Product Owner(s)"
+              },
+              {
+                "elmType": "div",
+                "style": {
+                  "color": "#777"
+                },
+                "txtContent": "[$Product Owner(s)]"
               }
             ]
           },
           {
             "elmType": "div",
             "style": {
-              "padding": "16px",
-              "background-color": "#ffffff",
-              "border-radius": "8px",
-              "box-shadow": "0 2px 4px rgba(0, 0, 0, 0.1)"
+              "flex": "1 1 45%",
+              "padding": "10px",
+              "border": "1px solid #ccc",
+              "border-radius": "8px"
             },
             "children": [
               {
                 "elmType": "div",
                 "style": {
-                  "font-size": "18px",
-                  "font-weight": "600",
-                  "margin-bottom": "8px",
-                  "color": "#1f2937"
+                  "font-weight": "bold",
+                  "color": "#555",
+                  "margin-bottom": "8px"
                 },
-                "txtContent": "Scheduling"
+                "txtContent": "Technical Contact(s)"
               },
               {
-                "elmType": "ul",
+                "elmType": "div",
                 "style": {
-                  "padding-left": "16px",
-                  "list-style-type": "circle"
+                  "color": "#777"
                 },
-                "children": [
-                  {
-                    "elmType": "li",
-                    "txtContent": "=concat('Day(s) of Week: ', [$Schedule_x0020__x002d__x0020_Day_x0028_s_x0029__x0020_of__x0020_Week])"
-                  },
-                  {
-                    "elmType": "li",
-                    "txtContent": "=concat('Execution Time(s): ', [$Schedule_x0020__x002d__x0020_Execution_x0020_Time_x0028_s_x0029_])"
-                  },
-                  {
-                    "elmType": "li",
-                    "txtContent": "=concat('Cyclic: ', if([$Schedule_x0020__x002d__x0020_Cyclic], 'Yes', 'No'))"
-                  },
-                  {
-                    "elmType": "li",
-                    "txtContent": "=concat('Cyclic Interval: ', [$Schedule_x0020__x002d__x0020_Cyclic_x0020_Interval], ' minutes')"
-                  },
-                  {
-                    "elmType": "li",
-                    "txtContent": "=concat('Deadline Time: ', [$Schedule_x0020__x002d__x0020_Deadline_x0020_Time])"
-                  },
-                  {
-                    "elmType": "li",
-                    "txtContent": "=concat('SLA(s): ', [$Schedule_x0020__x002d__x0020_SLA_x0028_s_x0029_])"
-                  }
-                ]
+                "txtContent": "[$Technical Contact(s)]"
               }
             ]
+          }
+        ]
+      },
+      {
+        "elmType": "div",
+        "style": {
+          "padding": "10px",
+          "border": "1px solid #ccc",
+          "border-radius": "8px"
+        },
+        "children": [
+          {
+            "elmType": "div",
+            "style": {
+              "font-weight": "bold",
+              "color": "#555",
+              "margin-bottom": "8px"
+            },
+            "txtContent": "Administrative Notes"
           },
           {
             "elmType": "div",
             "style": {
-              "padding": "16px",
-              "background-color": "#ffffff",
-              "border-radius": "8px",
-              "box-shadow": "0 2px 4px rgba(0, 0, 0, 0.1)"
+              "color": "#777"
             },
             "children": [
               {
-                "elmType": "div",
-                "style": {
-                  "font-size": "18px",
-                  "font-weight": "600",
-                  "margin-bottom": "8px",
-                  "color": "#1f2937"
-                },
-                "txtContent": "Ownership"
+                "elmType": "span",
+                "txtContent": "Troubleshooting: [$Admin - Troubleshooting]"
               },
               {
-                "elmType": "ul",
-                "style": {
-                  "padding-left": "16px",
-                  "list-style-type": "circle"
-                },
-                "children": [
-                  {
-                    "elmType": "li",
-                    "txtContent": "=concat('Product Owner(s): ', [$Product_x0020_Owner_x0028_s_x0029_])"
-                  },
-                  {
-                    "elmType": "li",
-                    "txtContent": "=concat('Technical Contact(s): ', [$Technical_x0020_Contact_x0028_s_x0029_])"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "elmType": "div",
-            "style": {
-              "padding": "16px",
-              "background-color": "#ffffff",
-              "border-radius": "8px",
-              "box-shadow": "0 2px 4px rgba(0, 0, 0, 0.1)"
-            },
-            "children": [
-              {
-                "elmType": "div",
-                "style": {
-                  "font-size": "18px",
-                  "font-weight": "600",
-                  "margin-bottom": "8px",
-                  "color": "#1f2937"
-                },
-                "txtContent": "Admin"
+                "elmType": "br"
               },
               {
-                "elmType": "ul",
-                "style": {
-                  "padding-left": "16px",
-                  "list-style-type": "circle"
-                },
-                "children": [
-                  {
-                    "elmType": "li",
-                    "txtContent": "=concat('Troubleshooting: ', [$Admin_x0020__x002d__x0020_Troubleshooting])"
-                  },
-                  {
-                    "elmType": "li",
-                    "txtContent": "=concat('Running in Control-M: ', [$Admin_x0020__x002d__x0020_Running_x0020_the_x0020_Job_x0020_in_x0020_Control_x002d_M])"
-                  },
-                  {
-                    "elmType": "li",
-                    "txtContent": "=concat('Running Manually: ', [$Admin_x0020__x002d__x0020_Running_x0020_the_x0020_Job_x0020_Manually])"
-                  }
-                ]
+                "elmType": "span",
+                "txtContent": "Running in Control-M: [$Admin - Running the Job in Control-M]"
+              },
+              {
+                "elmType": "br"
+              },
+              {
+                "elmType": "span",
+                "txtContent": "Running Manually: [$Admin - Running the Job Manually]"
               }
             ]
           }
