@@ -1,10 +1,7 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/column-formatting.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/tile-formatting.schema.json",
   "debugMode": true,
   "elmType": "div",
-  "attributes": {
-    "class": "custom-card"
-  },
   "style": {
     "background-color": "#ffffff",
     "border-radius": "10px",
@@ -19,9 +16,6 @@
   "children": [
     {
       "elmType": "div",
-      "attributes": {
-        "class": "card-header"
-      },
       "style": {
         "display": "flex",
         "justify-content": "space-between",
@@ -30,47 +24,29 @@
       "children": [
         {
           "elmType": "div",
-          "attributes": {
-            "class": "business-process"
-          },
           "style": {
             "font-size": "18px",
             "font-weight": "bold",
             "color": "#333"
           },
-          "children": [
-            {
-              "elmType": "span",
-              "style": {
-                "font-weight": "normal",
-                "color": "#555"
-              },
-              "txtContent": "Process Name"
-            }
-          ]
+          "txtContent": "=if([$Business Process Name], 'Business Process: ' + [$Business Process Name], 'No Business Process')"
         },
         {
           "elmType": "div",
-          "attributes": {
-            "class": "recovery-status rerunnable"
-          },
           "style": {
             "padding": "5px 10px",
             "border-radius": "4px",
             "color": "#ffffff",
             "font-size": "14px",
             "font-weight": "bold",
-            "background-color": "#4caf50"
+            "background-color": "=if([$Recovery - Rerun Job?], '#4caf50', '#f44336')"
           },
-          "txtContent": "Rerunnable"
+          "txtContent": "=if([$Recovery - Rerun Job?], 'Rerunnable', 'Non-Rerunnable')"
         }
       ]
     },
     {
       "elmType": "div",
-      "attributes": {
-        "class": "card-section"
-      },
       "style": {
         "display": "flex",
         "flex-wrap": "wrap",
@@ -79,9 +55,6 @@
       "children": [
         {
           "elmType": "div",
-          "attributes": {
-            "class": "card-block"
-          },
           "style": {
             "flex": "1 1 calc(50% - 20px)",
             "background-color": "#f9f9f9",
@@ -89,13 +62,23 @@
             "border-radius": "8px",
             "padding": "10px"
           },
-          "children": []
+          "children": [
+            {
+              "elmType": "div",
+              "style": {
+                "font-weight": "bold",
+                "margin-bottom": "5px"
+              },
+              "txtContent": "Purpose"
+            },
+            {
+              "elmType": "div",
+              "txtContent": "[$Purpose]"
+            }
+          ]
         },
         {
           "elmType": "div",
-          "attributes": {
-            "class": "card-block"
-          },
           "style": {
             "flex": "1 1 calc(50% - 20px)",
             "background-color": "#f9f9f9",
@@ -103,15 +86,25 @@
             "border-radius": "8px",
             "padding": "10px"
           },
-          "children": []
+          "children": [
+            {
+              "elmType": "div",
+              "style": {
+                "font-weight": "bold",
+                "margin-bottom": "5px"
+              },
+              "txtContent": "Restrictions & Prerequisites"
+            },
+            {
+              "elmType": "div",
+              "txtContent": "[$Restrictions & Prerequisites]"
+            }
+          ]
         }
       ]
     },
     {
       "elmType": "div",
-      "attributes": {
-        "class": "card-section"
-      },
       "style": {
         "display": "flex",
         "flex-wrap": "wrap",
@@ -120,9 +113,6 @@
       "children": [
         {
           "elmType": "div",
-          "attributes": {
-            "class": "card-block"
-          },
           "style": {
             "flex": "1 1 calc(50% - 20px)",
             "background-color": "#f9f9f9",
@@ -130,13 +120,49 @@
             "border-radius": "8px",
             "padding": "10px"
           },
-          "children": []
+          "children": [
+            {
+              "elmType": "div",
+              "style": {
+                "font-weight": "bold",
+                "margin-bottom": "5px"
+              },
+              "txtContent": "Schedule Details"
+            },
+            {
+              "elmType": "div",
+              "children": [
+                {
+                  "elmType": "span",
+                  "txtContent": "Day(s): [$Schedule - Day(s) of Week]"
+                },
+                {
+                  "elmType": "br"
+                },
+                {
+                  "elmType": "span",
+                  "txtContent": "Execution Time(s): [$Schedule - Execution Time(s)]"
+                },
+                {
+                  "elmType": "br"
+                },
+                {
+                  "elmType": "span",
+                  "txtContent": "Cyclic: =if([$Schedule - Cyclic], 'Yes', 'No')"
+                },
+                {
+                  "elmType": "br"
+                },
+                {
+                  "elmType": "span",
+                  "txtContent": "=if([$Schedule - Cyclic], 'Interval: ' + [$Schedule - Cyclic Interval] + ' mins', '')"
+                }
+              ]
+            }
+          ]
         },
         {
           "elmType": "div",
-          "attributes": {
-            "class": "card-block"
-          },
           "style": {
             "flex": "1 1 calc(50% - 20px)",
             "background-color": "#f9f9f9",
@@ -144,15 +170,25 @@
             "border-radius": "8px",
             "padding": "10px"
           },
-          "children": []
+          "children": [
+            {
+              "elmType": "div",
+              "style": {
+                "font-weight": "bold",
+                "margin-bottom": "5px"
+              },
+              "txtContent": "Recovery Actions"
+            },
+            {
+              "elmType": "div",
+              "txtContent": "[$Recovery - Action(s)]"
+            }
+          ]
         }
       ]
     },
     {
       "elmType": "div",
-      "attributes": {
-        "class": "card-section"
-      },
       "style": {
         "display": "flex",
         "flex-wrap": "wrap",
@@ -161,9 +197,6 @@
       "children": [
         {
           "elmType": "div",
-          "attributes": {
-            "class": "card-block"
-          },
           "style": {
             "flex": "1 1 calc(50% - 20px)",
             "background-color": "#f9f9f9",
@@ -171,13 +204,23 @@
             "border-radius": "8px",
             "padding": "10px"
           },
-          "children": []
+          "children": [
+            {
+              "elmType": "div",
+              "style": {
+                "font-weight": "bold",
+                "margin-bottom": "5px"
+              },
+              "txtContent": "Product Owner(s)"
+            },
+            {
+              "elmType": "div",
+              "txtContent": "[$Product Owner(s)]"
+            }
+          ]
         },
         {
           "elmType": "div",
-          "attributes": {
-            "class": "card-block"
-          },
           "style": {
             "flex": "1 1 calc(50% - 20px)",
             "background-color": "#f9f9f9",
@@ -185,25 +228,22 @@
             "border-radius": "8px",
             "padding": "10px"
           },
-          "children": []
+          "children": [
+            {
+              "elmType": "div",
+              "style": {
+                "font-weight": "bold",
+                "margin-bottom": "5px"
+              },
+              "txtContent": "Technical Contact(s)"
+            },
+            {
+              "elmType": "div",
+              "txtContent": "[$Technical Contact(s)]"
+            }
+          ]
         }
       ]
-    },
-    {
-      "elmType": "div",
-      "attributes": {
-        "class": "card-section full-width"
-      },
-      "style": {
-        "display": "flex",
-        "flex-wrap": "wrap",
-        "gap": "20px",
-        "flex": "1 1 100%",
-        "border": "1px solid #ddd",
-        "border-radius": "8px",
-        "padding": "10px"
-      },
-      "children": []
     }
   ]
 }
