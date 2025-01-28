@@ -1,0 +1,249 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/tile-formatting.schema.json",
+  "debugMode": true,
+  "elmType": "div",
+  "style": {
+    "background-color": "#ffffff",
+    "border-radius": "10px",
+    "box-shadow": "0 4px 8px rgba(0, 0, 0, 0.1)",
+    "padding": "20px",
+    "max-width": "800px",
+    "margin": "0 auto",
+    "display": "flex",
+    "flex-direction": "column",
+    "gap": "20px"
+  },
+  "children": [
+    {
+      "elmType": "div",
+      "style": {
+        "display": "flex",
+        "justify-content": "space-between",
+        "align-items": "center"
+      },
+      "children": [
+        {
+          "elmType": "div",
+          "style": {
+            "font-size": "18px",
+            "font-weight": "bold",
+            "color": "#333"
+          },
+          "txtContent": "=if([$Business Process Name], 'Business Process: ' + [$Business Process Name], 'No Business Process')"
+        },
+        {
+          "elmType": "div",
+          "style": {
+            "padding": "5px 10px",
+            "border-radius": "4px",
+            "color": "#ffffff",
+            "font-size": "14px",
+            "font-weight": "bold",
+            "background-color": "=if([$Recovery - Rerun Job?], '#4caf50', '#f44336')"
+          },
+          "txtContent": "=if([$Recovery - Rerun Job?], 'Rerunnable', 'Non-Rerunnable')"
+        }
+      ]
+    },
+    {
+      "elmType": "div",
+      "style": {
+        "display": "flex",
+        "flex-wrap": "wrap",
+        "gap": "20px"
+      },
+      "children": [
+        {
+          "elmType": "div",
+          "style": {
+            "flex": "1 1 calc(50% - 20px)",
+            "background-color": "#f9f9f9",
+            "border": "1px solid #ddd",
+            "border-radius": "8px",
+            "padding": "10px"
+          },
+          "children": [
+            {
+              "elmType": "div",
+              "style": {
+                "font-weight": "bold",
+                "margin-bottom": "5px"
+              },
+              "txtContent": "Purpose"
+            },
+            {
+              "elmType": "div",
+              "txtContent": "[$Purpose]"
+            }
+          ]
+        },
+        {
+          "elmType": "div",
+          "style": {
+            "flex": "1 1 calc(50% - 20px)",
+            "background-color": "#f9f9f9",
+            "border": "1px solid #ddd",
+            "border-radius": "8px",
+            "padding": "10px"
+          },
+          "children": [
+            {
+              "elmType": "div",
+              "style": {
+                "font-weight": "bold",
+                "margin-bottom": "5px"
+              },
+              "txtContent": "Restrictions & Prerequisites"
+            },
+            {
+              "elmType": "div",
+              "txtContent": "[$Restrictions & Prerequisites]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "elmType": "div",
+      "style": {
+        "display": "flex",
+        "flex-wrap": "wrap",
+        "gap": "20px"
+      },
+      "children": [
+        {
+          "elmType": "div",
+          "style": {
+            "flex": "1 1 calc(50% - 20px)",
+            "background-color": "#f9f9f9",
+            "border": "1px solid #ddd",
+            "border-radius": "8px",
+            "padding": "10px"
+          },
+          "children": [
+            {
+              "elmType": "div",
+              "style": {
+                "font-weight": "bold",
+                "margin-bottom": "5px"
+              },
+              "txtContent": "Schedule Details"
+            },
+            {
+              "elmType": "div",
+              "children": [
+                {
+                  "elmType": "span",
+                  "txtContent": "Day(s): [$Schedule - Day(s) of Week]"
+                },
+                {
+                  "elmType": "br"
+                },
+                {
+                  "elmType": "span",
+                  "txtContent": "Execution Time(s): [$Schedule - Execution Time(s)]"
+                },
+                {
+                  "elmType": "br"
+                },
+                {
+                  "elmType": "span",
+                  "txtContent": "Cyclic: =if([$Schedule - Cyclic], 'Yes', 'No')"
+                },
+                {
+                  "elmType": "br"
+                },
+                {
+                  "elmType": "span",
+                  "txtContent": "=if([$Schedule - Cyclic], 'Interval: ' + [$Schedule - Cyclic Interval] + ' mins', '')"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "elmType": "div",
+          "style": {
+            "flex": "1 1 calc(50% - 20px)",
+            "background-color": "#f9f9f9",
+            "border": "1px solid #ddd",
+            "border-radius": "8px",
+            "padding": "10px"
+          },
+          "children": [
+            {
+              "elmType": "div",
+              "style": {
+                "font-weight": "bold",
+                "margin-bottom": "5px"
+              },
+              "txtContent": "Recovery Actions"
+            },
+            {
+              "elmType": "div",
+              "txtContent": "[$Recovery - Action(s)]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "elmType": "div",
+      "style": {
+        "display": "flex",
+        "flex-wrap": "wrap",
+        "gap": "20px"
+      },
+      "children": [
+        {
+          "elmType": "div",
+          "style": {
+            "flex": "1 1 calc(50% - 20px)",
+            "background-color": "#f9f9f9",
+            "border": "1px solid #ddd",
+            "border-radius": "8px",
+            "padding": "10px"
+          },
+          "children": [
+            {
+              "elmType": "div",
+              "style": {
+                "font-weight": "bold",
+                "margin-bottom": "5px"
+              },
+              "txtContent": "Product Owner(s)"
+            },
+            {
+              "elmType": "div",
+              "txtContent": "[$Product Owner(s)]"
+            }
+          ]
+        },
+        {
+          "elmType": "div",
+          "style": {
+            "flex": "1 1 calc(50% - 20px)",
+            "background-color": "#f9f9f9",
+            "border": "1px solid #ddd",
+            "border-radius": "8px",
+            "padding": "10px"
+          },
+          "children": [
+            {
+              "elmType": "div",
+              "style": {
+                "font-weight": "bold",
+                "margin-bottom": "5px"
+              },
+              "txtContent": "Technical Contact(s)"
+            },
+            {
+              "elmType": "div",
+              "txtContent": "[$Technical Contact(s)]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
