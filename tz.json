@@ -1,315 +1,209 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/tile-formatting.schema.json",
-  "width": 1200,
-  "height": 1400,
-  "hideSelection": true,
-  "fillHorizontally": true,
-  "formatter": {
-    "elmType": "div",
-    "style": {
-      "background-color": "#f9f9f9",
-      "border-radius": "10px",
-      "box-shadow": "0 4px 8px rgba(0,0,0,0.1)",
-      "padding": "20px",
-      "display": "flex",
-      "flex-direction": "column",
-      "gap": "20px",
-      "overflow": "hidden"
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/column-formatting.schema.json",
+  "debugMode": true,
+  "elmType": "div",
+  "attributes": {
+    "class": "custom-card"
+  },
+  "style": {
+    "background-color": "#ffffff",
+    "border-radius": "10px",
+    "box-shadow": "0 4px 8px rgba(0, 0, 0, 0.1)",
+    "padding": "20px",
+    "max-width": "800px",
+    "margin": "0 auto",
+    "display": "flex",
+    "flex-direction": "column",
+    "gap": "20px"
+  },
+  "children": [
+    {
+      "elmType": "div",
+      "attributes": {
+        "class": "card-header"
+      },
+      "style": {
+        "display": "flex",
+        "justify-content": "space-between",
+        "align-items": "center"
+      },
+      "children": [
+        {
+          "elmType": "div",
+          "attributes": {
+            "class": "business-process"
+          },
+          "style": {
+            "font-size": "18px",
+            "font-weight": "bold",
+            "color": "#333"
+          },
+          "children": [
+            {
+              "elmType": "span",
+              "style": {
+                "font-weight": "normal",
+                "color": "#555"
+              },
+              "txtContent": "Process Name"
+            }
+          ]
+        },
+        {
+          "elmType": "div",
+          "attributes": {
+            "class": "recovery-status rerunnable"
+          },
+          "style": {
+            "padding": "5px 10px",
+            "border-radius": "4px",
+            "color": "#ffffff",
+            "font-size": "14px",
+            "font-weight": "bold",
+            "background-color": "#4caf50"
+          },
+          "txtContent": "Rerunnable"
+        }
+      ]
     },
-    "children": [
-      {
-        "elmType": "div",
-        "style": {
-          "display": "flex",
-          "align-items": "center",
-          "gap": "20px"
-        },
-        "children": [
-          {
-            "elmType": "div",
-            "style": {
-              "font-size": "24px",
-              "font-weight": "bold",
-              "color": "#333"
-            },
-            "txtContent": "[$Business Process Name]"
-          },
-          {
-            "elmType": "div",
-            "style": {
-              "background-color": "=if([$Recovery - Rerun Job?], '#4caf50', '#f44336')",
-              "color": "#fff",
-              "border-radius": "4px",
-              "padding": "5px 10px",
-              "font-size": "14px"
-            },
-            "txtContent": "=if([$Recovery - Rerun Job?], 'Rerunnable', 'Non-Rerunnable')"
-          }
-        ]
+    {
+      "elmType": "div",
+      "attributes": {
+        "class": "card-section"
       },
-      {
-        "elmType": "div",
-        "style": {
-          "display": "flex",
-          "flex-wrap": "wrap",
-          "gap": "20px"
-        },
-        "children": [
-          {
-            "elmType": "div",
-            "style": {
-              "flex": "1 1 45%",
-              "padding": "10px",
-              "border": "1px solid #ccc",
-              "border-radius": "8px"
-            },
-            "children": [
-              {
-                "elmType": "div",
-                "style": {
-                  "font-weight": "bold",
-                  "color": "#555",
-                  "margin-bottom": "8px"
-                },
-                "txtContent": "Purpose"
-              },
-              {
-                "elmType": "div",
-                "style": {
-                  "color": "#777"
-                },
-                "txtContent": "[$Purpose]"
-              }
-            ]
-          },
-          {
-            "elmType": "div",
-            "style": {
-              "flex": "1 1 45%",
-              "padding": "10px",
-              "border": "1px solid #ccc",
-              "border-radius": "8px"
-            },
-            "children": [
-              {
-                "elmType": "div",
-                "style": {
-                  "font-weight": "bold",
-                  "color": "#555",
-                  "margin-bottom": "8px"
-                },
-                "txtContent": "Restrictions & Prerequisites"
-              },
-              {
-                "elmType": "div",
-                "style": {
-                  "color": "#777"
-                },
-                "txtContent": "[$Restrictions & Prerequisites]"
-              }
-            ]
-          }
-        ]
+      "style": {
+        "display": "flex",
+        "flex-wrap": "wrap",
+        "gap": "20px"
       },
-      {
-        "elmType": "div",
-        "style": {
-          "display": "flex",
-          "flex-wrap": "wrap",
-          "gap": "20px"
-        },
-        "children": [
-          {
-            "elmType": "div",
-            "style": {
-              "flex": "1 1 45%",
-              "padding": "10px",
-              "border": "1px solid #ccc",
-              "border-radius": "8px"
-            },
-            "children": [
-              {
-                "elmType": "div",
-                "style": {
-                  "font-weight": "bold",
-                  "color": "#555",
-                  "margin-bottom": "8px"
-                },
-                "txtContent": "Schedule Details"
-              },
-              {
-                "elmType": "div",
-                "style": {
-                  "color": "#777"
-                },
-                "children": [
-                  {
-                    "elmType": "span",
-                    "txtContent": "Day(s): [$Schedule - Day(s) of Week]"
-                  },
-                  {
-                    "elmType": "br"
-                  },
-                  {
-                    "elmType": "span",
-                    "txtContent": "Execution Time(s): [$Schedule - Execution Time(s)]"
-                  },
-                  {
-                    "elmType": "br"
-                  },
-                  {
-                    "elmType": "span",
-                    "txtContent": "Cyclic: =if([$Schedule - Cyclic], 'Yes', 'No')"
-                  },
-                  {
-                    "elmType": "br"
-                  },
-                  {
-                    "elmType": "span",
-                    "txtContent": "=if([$Schedule - Cyclic], 'Interval: ' + [$Schedule - Cyclic Interval] + ' mins', '')"
-                  }
-                ]
-              }
-            ]
+      "children": [
+        {
+          "elmType": "div",
+          "attributes": {
+            "class": "card-block"
           },
-          {
-            "elmType": "div",
-            "style": {
-              "flex": "1 1 45%",
-              "padding": "10px",
-              "border": "1px solid #ccc",
-              "border-radius": "8px"
-            },
-            "children": [
-              {
-                "elmType": "div",
-                "style": {
-                  "font-weight": "bold",
-                  "color": "#555",
-                  "margin-bottom": "8px"
-                },
-                "txtContent": "Recovery Actions"
-              },
-              {
-                "elmType": "div",
-                "style": {
-                  "color": "#777"
-                },
-                "txtContent": "[$Recovery - Action(s)]"
-              }
-            ]
-          }
-        ]
+          "style": {
+            "flex": "1 1 calc(50% - 20px)",
+            "background-color": "#f9f9f9",
+            "border": "1px solid #ddd",
+            "border-radius": "8px",
+            "padding": "10px"
+          },
+          "children": []
+        },
+        {
+          "elmType": "div",
+          "attributes": {
+            "class": "card-block"
+          },
+          "style": {
+            "flex": "1 1 calc(50% - 20px)",
+            "background-color": "#f9f9f9",
+            "border": "1px solid #ddd",
+            "border-radius": "8px",
+            "padding": "10px"
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "elmType": "div",
+      "attributes": {
+        "class": "card-section"
       },
-      {
-        "elmType": "div",
-        "style": {
-          "display": "flex",
-          "flex-wrap": "wrap",
-          "gap": "20px"
-        },
-        "children": [
-          {
-            "elmType": "div",
-            "style": {
-              "flex": "1 1 45%",
-              "padding": "10px",
-              "border": "1px solid #ccc",
-              "border-radius": "8px"
-            },
-            "children": [
-              {
-                "elmType": "div",
-                "style": {
-                  "font-weight": "bold",
-                  "color": "#555",
-                  "margin-bottom": "8px"
-                },
-                "txtContent": "Product Owner(s)"
-              },
-              {
-                "elmType": "div",
-                "style": {
-                  "color": "#777"
-                },
-                "txtContent": "[$Product Owner(s)]"
-              }
-            ]
-          },
-          {
-            "elmType": "div",
-            "style": {
-              "flex": "1 1 45%",
-              "padding": "10px",
-              "border": "1px solid #ccc",
-              "border-radius": "8px"
-            },
-            "children": [
-              {
-                "elmType": "div",
-                "style": {
-                  "font-weight": "bold",
-                  "color": "#555",
-                  "margin-bottom": "8px"
-                },
-                "txtContent": "Technical Contact(s)"
-              },
-              {
-                "elmType": "div",
-                "style": {
-                  "color": "#777"
-                },
-                "txtContent": "[$Technical Contact(s)]"
-              }
-            ]
-          }
-        ]
+      "style": {
+        "display": "flex",
+        "flex-wrap": "wrap",
+        "gap": "20px"
       },
-      {
-        "elmType": "div",
-        "style": {
-          "padding": "10px",
-          "border": "1px solid #ccc",
-          "border-radius": "8px"
-        },
-        "children": [
-          {
-            "elmType": "div",
-            "style": {
-              "font-weight": "bold",
-              "color": "#555",
-              "margin-bottom": "8px"
-            },
-            "txtContent": "Administrative Notes"
+      "children": [
+        {
+          "elmType": "div",
+          "attributes": {
+            "class": "card-block"
           },
-          {
-            "elmType": "div",
-            "style": {
-              "color": "#777"
-            },
-            "children": [
-              {
-                "elmType": "span",
-                "txtContent": "Troubleshooting: [$Admin - Troubleshooting]"
-              },
-              {
-                "elmType": "br"
-              },
-              {
-                "elmType": "span",
-                "txtContent": "Running in Control-M: [$Admin - Running the Job in Control-M]"
-              },
-              {
-                "elmType": "br"
-              },
-              {
-                "elmType": "span",
-                "txtContent": "Running Manually: [$Admin - Running the Job Manually]"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+          "style": {
+            "flex": "1 1 calc(50% - 20px)",
+            "background-color": "#f9f9f9",
+            "border": "1px solid #ddd",
+            "border-radius": "8px",
+            "padding": "10px"
+          },
+          "children": []
+        },
+        {
+          "elmType": "div",
+          "attributes": {
+            "class": "card-block"
+          },
+          "style": {
+            "flex": "1 1 calc(50% - 20px)",
+            "background-color": "#f9f9f9",
+            "border": "1px solid #ddd",
+            "border-radius": "8px",
+            "padding": "10px"
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "elmType": "div",
+      "attributes": {
+        "class": "card-section"
+      },
+      "style": {
+        "display": "flex",
+        "flex-wrap": "wrap",
+        "gap": "20px"
+      },
+      "children": [
+        {
+          "elmType": "div",
+          "attributes": {
+            "class": "card-block"
+          },
+          "style": {
+            "flex": "1 1 calc(50% - 20px)",
+            "background-color": "#f9f9f9",
+            "border": "1px solid #ddd",
+            "border-radius": "8px",
+            "padding": "10px"
+          },
+          "children": []
+        },
+        {
+          "elmType": "div",
+          "attributes": {
+            "class": "card-block"
+          },
+          "style": {
+            "flex": "1 1 calc(50% - 20px)",
+            "background-color": "#f9f9f9",
+            "border": "1px solid #ddd",
+            "border-radius": "8px",
+            "padding": "10px"
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "elmType": "div",
+      "attributes": {
+        "class": "card-section full-width"
+      },
+      "style": {
+        "display": "flex",
+        "flex-wrap": "wrap",
+        "gap": "20px",
+        "flex": "1 1 100%",
+        "border": "1px solid #ddd",
+        "border-radius": "8px",
+        "padding": "10px"
+      },
+      "children": []
+    }
+  ]
 }
